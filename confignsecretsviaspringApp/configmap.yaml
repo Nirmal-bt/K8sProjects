@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-config
+data:
+  app.config.key1: nirmalbt
+  app.config.key2: secondvalue

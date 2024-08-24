@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: restapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: restapi
+  template:
+    metadata:
+      labels:
+        app: restapi 
+    spec:
+      containers:
+      - name: restapi
+        image: nirmalbt/restapi:firstdemo
+        ports:
+        - containerPort: 8080
+        env:
+          - name: SPRING_DATASOURCE_URL
+            value: "jdbc:mysql://mysql:3306/testbookdb"
+          - name: SPRING_DATASOURCE_USERNAME
+            value: "admin"
+          - name: SPRING_DATASOURCE_PASSWORD
+            value: "root"
+          - name: SPRING_KAFKA_CONSUMER_BOOTSTRAP_SERVERS
+            value: "kafkaesque:9093"
+          - name: SPRING_KAFKA_PRODUCER_BOOTSTRAP_SERVERS
+            value: "kafkaesque:9093"
+         
